@@ -2,8 +2,8 @@
     <!-- Base application theme. -->
     <style name="Theme.ExchangeRates" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/lightPurple</item>
-        <item name="colorPrimaryVariant">@color/darkPurple</item>
+        <item name="colorPrimary">@color/lightBlue</item>
+        <item name="colorPrimaryVariant">@color/darkBlue</item>
         <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/lightTeal</item>

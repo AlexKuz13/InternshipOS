@@ -3,4 +3,6 @@
 
     <string name="hello_blank_fragment">Currency list fragment</string>
     <string name="currencies">Валюты</string>
+    <string name="date">Дата</string>
+    <string name="choose_date">Выбор даты</string>
 </resources>
