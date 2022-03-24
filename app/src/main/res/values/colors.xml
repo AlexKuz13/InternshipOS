@@ -7,4 +7,7 @@
     <color name="darkTeal">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="lightBlue">#3FA9F5</color>
+    
+    <color name="backgroundSplash">@color/lightBlue</color>
 </resources>
