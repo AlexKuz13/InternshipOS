@@ -2,18 +2,13 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:drawable="@drawable/splash_bg" />
 
-    <item>
-        <bitmap
-            android:gravity="center"
-            android:src="@drawable/logo"
-            />
-    </item>
+    <item
+        android:drawable="@drawable/ic_money"
+        android:gravity="center" />
 
-    <item android:bottom="50dp">
-        <bitmap
-            android:gravity="bottom"
-            android:src="@drawable/app_version" />
-
-    </item>
+    <item
+        android:bottom="50dp"
+        android:drawable="@drawable/ic_app_version_1_0"
+        android:gravity="bottom|center_horizontal" />
 
 </layer-list>
