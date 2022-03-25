@@ -1,5 +1,6 @@
 package com.alexkuz.exchangerates.ui.fragments
 
+import android.database.CursorIndexOutOfBoundsException
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,10 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import com.alexkuz.exchangerates.adapters.CurrencyAdapter
 import com.alexkuz.exchangerates.databinding.FragmentCurrencyListBinding
+import com.alexkuz.exchangerates.model.Currency
 import com.alexkuz.exchangerates.model.getCurrencies
+import com.alexkuz.exchangerates.ui.viewmodels.CurrencyViewModel
 import com.alexkuz.exchangerates.util.CustomDatePicker
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.DateFormatSymbols
 import java.util.*
 
@@ -20,6 +25,7 @@ class CurrencyListFragment : Fragment() {
     private var _binding: FragmentCurrencyListBinding? = null
     private val binding get() = _binding!!
     private val adapter by lazy { CurrencyAdapter() }
+    private val currencyViewModel by viewModel<CurrencyViewModel>()
 
     private val cal = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
     private val year get() = cal.get(Calendar.YEAR)
@@ -43,7 +49,13 @@ class CurrencyListFragment : Fragment() {
 
     private fun setupRecyclerView() {
         binding.recyclerView.adapter = adapter
-        adapter.setData(getCurrencies())
+
+        val observerCurrency = Observer<List<Currency>> {
+            val list = it
+            adapter.setData(list)
+        }
+
+        currencyViewModel.getListCurrencies().observe(this, observerCurrency)
     }
 
     private fun openDatePicker() {
