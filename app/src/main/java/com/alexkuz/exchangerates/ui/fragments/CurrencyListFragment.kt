@@ -21,7 +21,7 @@ class CurrencyListFragment : Fragment() {
     private val binding get() = _binding!!
     private val adapter by lazy { CurrencyAdapter() }
 
-    private var cal = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
+    private val cal = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
     private val year get() = cal.get(Calendar.YEAR)
     private val month get() = cal.get(Calendar.MONTH)
     private val day get() = cal.get(Calendar.DAY_OF_MONTH)
@@ -64,7 +64,7 @@ class CurrencyListFragment : Fragment() {
 
 
     private fun convertDate(day: Int, month: Int, year: Int): String {
-        return "$day " + DateFormatSymbols().months[month] + " $year"
+        return "$day ${DateFormatSymbols().months[month]} $year"
     }
 
 }

@@ -5,7 +5,7 @@
     <dimen name="normal_margin">16dp</dimen>
     <dimen name="small_margin">10dp</dimen>
     <dimen name="margin_title_start">56dp</dimen>
-    <dimen name="very_small_margin">5dp</dimen>
+    <dimen name="margin_6dp">6dp</dimen>
 
     <!-- Text size -->
     <dimen name="large_text_size">30sp</dimen>
