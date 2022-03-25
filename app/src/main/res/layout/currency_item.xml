@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="@dimen/very_small_margin"
+        android:backgroundTint="@color/veryLightGray"
+        app:cardCornerRadius="@dimen/normal_margin">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_symbol"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/normal_margin"
+                android:backgroundTint="@color/veryLightGray"
+                android:textColor="@color/lightBlue"
+                android:textSize="@dimen/large_text_size"
+                android:textStyle="bold"
+                tools:text="USD" />
+
+            <TextView
+                android:id="@+id/tv_exchange_rate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/very_small_margin"
+                android:textColor="@color/lightGray"
+                android:textSize="@dimen/normal_text_size"
+                tools:text="90 Р" />
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+</LinearLayout>

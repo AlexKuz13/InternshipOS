@@ -19,6 +19,18 @@ fun getCurrencies(): List<Currency> {
         Currency(symbols = "EUR", 100, "Евро"),
         Currency(symbols = "USD", 90, "Доллар"),
         Currency(symbols = "AMD", 80, "Амд"),
+        Currency(symbols = "UAN", 110, "Юань"),
+        Currency(symbols = "EUR", 100, "Евро"),
+        Currency(symbols = "USD", 90, "Доллар"),
+        Currency(symbols = "AMD", 80, "Амд"),
+        Currency(symbols = "UAN", 110, "Юань"),
+        Currency(symbols = "EUR", 100, "Евро"),
+        Currency(symbols = "USD", 90, "Доллар"),
+        Currency(symbols = "AMD", 80, "Амд"),
+        Currency(symbols = "UAN", 110, "Юань"),
+        Currency(symbols = "EUR", 100, "Евро"),
+        Currency(symbols = "USD", 90, "Доллар"),
+        Currency(symbols = "AMD", 80, "Амд"),
         Currency(symbols = "UAN", 110, "Юань")
     )
 }
