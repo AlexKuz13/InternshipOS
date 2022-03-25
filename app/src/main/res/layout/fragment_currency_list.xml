@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.fragments.CurrencyListFragment">
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_date_picker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/normal_margin"
+        android:hint="@string/date"
+        android:textColorHint="@color/dateColorHint"
+        app:boxBackgroundColor="@color/white"
+        app:boxStrokeColor="@color/mtrl_textinput_default_box_stroke_color"
+        app:endIconMode="clear_text">
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tie_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:inputType="none"
+            android:textColor="@color/lightGray" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="@dimen/normal_margin"
+        android:layout_marginTop="@dimen/normal_margin"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="3"
+        tools:itemCount="4"
+        tools:listitem="@layout/currency_item" />
+
+</LinearLayout>
