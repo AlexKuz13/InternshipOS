@@ -7,7 +7,7 @@ data class Currency(
 )
 
 fun getCurrencies(): List<Currency> {
-    return  listOf(
+    return listOf(
         Currency(symbols = "EUR", 100, "Евро"),
         Currency(symbols = "USD", 90, "Доллар"),
         Currency(symbols = "AMD", 80, "Амд"),
