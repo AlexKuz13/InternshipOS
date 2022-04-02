@@ -1,16 +1,15 @@
 package com.alexkuz.exchangerates.ui.fragments
 
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import com.alexkuz.exchangerates.adapters.CurrencyAdapter
 import com.alexkuz.exchangerates.databinding.FragmentCurrencyListBinding
-import com.alexkuz.exchangerates.model.getCurrencies
+import com.alexkuz.exchangerates.ui.viewmodels.CurrencyViewModel
 import com.alexkuz.exchangerates.util.CustomDatePicker
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.DateFormatSymbols
 import java.util.*
 
@@ -20,6 +19,7 @@ class CurrencyListFragment : Fragment() {
     private var _binding: FragmentCurrencyListBinding? = null
     private val binding get() = _binding!!
     private val adapter by lazy { CurrencyAdapter() }
+    private val currencyViewModel by viewModel<CurrencyViewModel>()
 
     private val cal = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
     private val year get() = cal.get(Calendar.YEAR)
@@ -42,8 +42,12 @@ class CurrencyListFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
+        currencyViewModel.onInitCurrencies()
         binding.recyclerView.adapter = adapter
-        adapter.setData(getCurrencies())
+
+        currencyViewModel.currencyList.observe(this, {
+            adapter.setData(it)
+        })
     }
 
     private fun openDatePicker() {
