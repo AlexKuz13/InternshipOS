@@ -17,9 +17,9 @@ class CurrencyAdapter : RecyclerView.Adapter<CurrencyAdapter.ViewHolder>() {
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(currency: Currency) {
-            binding.tvSymbol.text = currency.symbols
+            binding.tvSymbol.text = currency.charCode
             val exRate =
-                "${currency.exchange_rate}  ${binding.root.context.getString(R.string.ruble)}"
+                binding.root.context.getString(R.string.exchange_rate, currency.value)
             binding.tvExchangeRate.text = exRate
 
         }

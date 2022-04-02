@@ -7,7 +7,7 @@ import org.koin.dsl.module
 val appModule = module {
 
     viewModel {
-        CurrencyViewModel()
+        CurrencyViewModel(repository = get())
     }
 
 }
