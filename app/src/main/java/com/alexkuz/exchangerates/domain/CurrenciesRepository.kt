@@ -1,9 +1,9 @@
 package com.alexkuz.exchangerates.domain
 
-import com.alexkuz.exchangerates.model.CurrencyResponse
+import com.alexkuz.exchangerates.model.CurrencyResult
 
 interface CurrenciesRepository {
 
-    suspend fun getCurrencies(): CurrencyResponse
+    suspend fun getCurrencies(): CurrencyResult
 
 }

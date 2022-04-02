@@ -20,8 +20,11 @@ class CurrencyViewModel(
     fun onInitCurrencies() {
         viewModelScope.launch(Dispatchers.IO) {
             _currencyList.postValue(repository.getCurrencies().currency.values.toList())
+            _currencyListLoading.postValue(false)
         }
     }
 
+    private val _currencyListLoading = MutableLiveData(true)
+    val currencyListLoading: LiveData<Boolean> get() = _currencyListLoading
 
 }

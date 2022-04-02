@@ -42,6 +42,10 @@ class CurrencyListFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
+        currencyViewModel.currencyListLoading.observe(this, { isLoading ->
+            binding.progressCircular.visibility = if (isLoading) View.VISIBLE else View.GONE
+        })
+
         currencyViewModel.onInitCurrencies()
         binding.recyclerView.adapter = adapter
 
