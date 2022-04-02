@@ -9,6 +9,7 @@ import com.alexkuz.exchangerates.adapters.CurrencyAdapter
 import com.alexkuz.exchangerates.databinding.FragmentCurrencyListBinding
 import com.alexkuz.exchangerates.ui.viewmodels.CurrencyViewModel
 import com.alexkuz.exchangerates.util.CustomDatePicker
+import com.alexkuz.exchangerates.util.showSnackBar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.DateFormatSymbols
 import java.util.*
@@ -42,14 +43,18 @@ class CurrencyListFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        currencyViewModel.currencyListLoading.observe(this, { isLoading ->
+        currencyViewModel.currencyListLoading.observe(viewLifecycleOwner, { isLoading ->
             binding.progressCircular.visibility = if (isLoading) View.VISIBLE else View.GONE
         })
 
         currencyViewModel.onInitCurrencies()
         binding.recyclerView.adapter = adapter
 
-        currencyViewModel.currencyList.observe(this, {
+        currencyViewModel.currencyListError.observe(viewLifecycleOwner, {
+            showSnackBar(binding.root, it)
+        })
+
+        currencyViewModel.currencyList.observe(viewLifecycleOwner, {
             adapter.setData(it)
         })
     }

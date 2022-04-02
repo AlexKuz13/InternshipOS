@@ -1,13 +1,20 @@
 package com.alexkuz.exchangerates.domain
 
+import android.content.Context
+import com.alexkuz.exchangerates.R
 import com.alexkuz.exchangerates.data.network.CurrenciesRestRepository
 import com.alexkuz.exchangerates.model.CurrencyResult
+import com.alexkuz.exchangerates.util.NetworkResult
+import com.alexkuz.exchangerates.util.hasInternetConnection
 
 class CurrenciesRepositoryImpl(
-    private val restRepository: CurrenciesRestRepository
+    private val restRepository: CurrenciesRestRepository,
+    private val context: Context
 ) : CurrenciesRepository {
 
-    override suspend fun getCurrencies(): CurrencyResult {
-        return restRepository.getCurrencies()
+    override suspend fun getCurrencies(): NetworkResult<CurrencyResult> {
+        return if (hasInternetConnection(context))
+            restRepository.getCurrencies()
+        else NetworkResult.Error(context.getString(R.string.no_internet_connection))
     }
 }
