@@ -52,12 +52,11 @@ class CurrencyListFragment : Fragment() {
         currencyViewModel.onInitCurrencies()
         binding.recyclerView.adapter = adapter
 
-        currencyViewModel.currencyListError.observe(viewLifecycleOwner) { error ->
-            if (error)
-                showSnackBar(
-                    binding.root,
-                    requireContext().getString(R.string.exchange_rates_not_found)
-                )
+        currencyViewModel.currencyListError.observe(viewLifecycleOwner) {
+            showSnackBar(
+                binding.root,
+                requireContext().getString(R.string.exchange_rates_not_found)
+            )
         }
 
         currencyViewModel.currencyList.observe(viewLifecycleOwner, adapter::setData)

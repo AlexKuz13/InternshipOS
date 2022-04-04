@@ -20,15 +20,14 @@ class CurrencyViewModel(
     private val _currencyListLoading = MutableLiveData(true)
     val currencyListLoading: LiveData<Boolean> get() = _currencyListLoading
 
-    private val _currencyListError = MutableLiveData<Boolean>()
-    val currencyListError: LiveData<Boolean> get() = _currencyListError
+    private val _currencyListError = MutableLiveData<Unit>()
+    val currencyListError: LiveData<Unit> get() = _currencyListError
 
     fun onInitCurrencies() {
         viewModelScope.launch {
             when (val result = repository.getCurrencies()) {
-                is NetworkResult.Error -> _currencyListError.value = true
+                is NetworkResult.Error -> _currencyListError.value = Unit
                 is NetworkResult.Success -> {
-                    _currencyListError.value = false
                     _currencyList.value = result.data?.currency?.values?.toList()
                 }
             }
