@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import com.alexkuz.exchangerates.R
 import com.alexkuz.exchangerates.adapters.CurrencyAdapter
 import com.alexkuz.exchangerates.databinding.FragmentCurrencyListBinding
 import com.alexkuz.exchangerates.ui.viewmodels.CurrencyViewModel
@@ -51,8 +52,12 @@ class CurrencyListFragment : Fragment() {
         currencyViewModel.onInitCurrencies()
         binding.recyclerView.adapter = adapter
 
-        currencyViewModel.currencyListError.observe(viewLifecycleOwner) {
-            showSnackBar(binding.root, it)
+        currencyViewModel.currencyListError.observe(viewLifecycleOwner) { error ->
+            if (error)
+                showSnackBar(
+                    binding.root,
+                    requireContext().getString(R.string.exchange_rates_not_found)
+                )
         }
 
         currencyViewModel.currencyList.observe(viewLifecycleOwner, adapter::setData)

@@ -11,8 +11,7 @@ val repositoryModule = module {
 
     single<CurrenciesRestRepository> {
         CurrenciesRestRepositoryImpl(
-            currencyApi = get(),
-            context = androidContext()
+            currencyApi = get()
         )
     }
 

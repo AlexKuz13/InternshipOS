@@ -1,7 +1,6 @@
 package com.alexkuz.exchangerates.domain
 
 import android.content.Context
-import com.alexkuz.exchangerates.R
 import com.alexkuz.exchangerates.data.network.CurrenciesRestRepository
 import com.alexkuz.exchangerates.model.CurrencyResult
 import com.alexkuz.exchangerates.util.NetworkResult
@@ -15,6 +14,6 @@ class CurrenciesRepositoryImpl(
     override suspend fun getCurrencies(): NetworkResult<CurrencyResult> {
         return if (hasInternetConnection(context))
             restRepository.getCurrencies()
-        else NetworkResult.Error(context.getString(R.string.no_internet_connection))
+        else NetworkResult.Error()
     }
 }
