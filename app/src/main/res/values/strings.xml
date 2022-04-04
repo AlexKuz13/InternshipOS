@@ -6,5 +6,10 @@
     <string name="date">Дата</string>
     <string name="choose_date">Выбор даты</string>
 
-    <string name="ruble">₽</string>
+    <string name="exchange_rate">%1$.2f ₽</string>
+
+    <!-- Errors -->
+    <string name="exchange_rates_not_found">Курс валют не найден</string>
+
+    <string name="okay">Ок</string>
 </resources>
