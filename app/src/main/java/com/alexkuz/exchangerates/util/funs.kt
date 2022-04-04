@@ -4,11 +4,12 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.view.View
+import com.alexkuz.exchangerates.R
 import com.google.android.material.snackbar.Snackbar
 
 fun showSnackBar(rootView: View, text: String) {
     Snackbar.make(rootView, text, Snackbar.LENGTH_SHORT)
-        .setAction("Okay") {}
+        .setAction(rootView.context.getText(R.string.okay)) {}
         .show()
 }
 

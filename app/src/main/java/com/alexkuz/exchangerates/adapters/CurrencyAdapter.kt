@@ -18,10 +18,8 @@ class CurrencyAdapter : RecyclerView.Adapter<CurrencyAdapter.ViewHolder>() {
 
         fun bind(currency: Currency) {
             binding.tvSymbol.text = currency.charCode
-            val exRate =
+            binding.tvExchangeRate.text =
                 binding.root.context.getString(R.string.exchange_rate, currency.value)
-            binding.tvExchangeRate.text = exRate
-
         }
 
     }

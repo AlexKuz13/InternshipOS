@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.alexkuz.exchangerates.adapters.CurrencyAdapter
 import com.alexkuz.exchangerates.databinding.FragmentCurrencyListBinding
@@ -43,20 +44,18 @@ class CurrencyListFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        currencyViewModel.currencyListLoading.observe(viewLifecycleOwner, { isLoading ->
-            binding.progressCircular.visibility = if (isLoading) View.VISIBLE else View.GONE
-        })
+        currencyViewModel.currencyListLoading.observe(viewLifecycleOwner) { isLoading ->
+            binding.progressCircular.isVisible = isLoading
+        }
 
         currencyViewModel.onInitCurrencies()
         binding.recyclerView.adapter = adapter
 
-        currencyViewModel.currencyListError.observe(viewLifecycleOwner, {
+        currencyViewModel.currencyListError.observe(viewLifecycleOwner) {
             showSnackBar(binding.root, it)
-        })
+        }
 
-        currencyViewModel.currencyList.observe(viewLifecycleOwner, {
-            adapter.setData(it)
-        })
+        currencyViewModel.currencyList.observe(viewLifecycleOwner, adapter::setData)
     }
 
     private fun openDatePicker() {
